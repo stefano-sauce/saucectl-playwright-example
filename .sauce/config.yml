@@ -6,7 +6,6 @@ sauce:
   metadata:
     tags:
       - e2e
-      - release team
       - saucectl
       - playwright
 playwright:
