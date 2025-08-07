@@ -7,6 +7,7 @@ sauce:
     tags:
       - e2e
       - saucectl
+      - studyntest
       - playwright
 playwright:
   version: package.json # See https://docs.saucelabs.com/web-apps/automated-testing/playwright/#supported-testing-platforms for a list of supported versions.
