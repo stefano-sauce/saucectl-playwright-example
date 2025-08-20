@@ -1,5 +1,5 @@
 {
-    "name": "saucectl-playwright-example",
+    "name": "saucelabs-playwright-example",
     "version": "1.0.0",
     "description": "Example running saucectl with playwright.",
     "main": "index.js",
@@ -7,6 +7,7 @@
         "test": "tests"
     },
     "scripts": {
+        "start": "serve .",
         "test.local": "npx playwright test",
         "test.sauce.us": "saucectl run",
         "test.sauce.eu": "saucectl run --region eu-central-1"
@@ -24,6 +25,7 @@
     "homepage": "https://github.com/saucelabs/saucectl-playwright-example#readme",
     "devDependencies": {
         "@playwright/test": "1.52.0",
-        "saucectl": "^0.186.4"
+        "saucectl": "^0.186.4",
+        "serve": "^14.2.3"
     }
 }
