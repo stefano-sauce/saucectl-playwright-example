@@ -6,8 +6,8 @@ sauce:
   metadata:
     tags:
       - e2e
+      - release team
       - saucectl
-      - studyntest
       - playwright
 playwright:
   version: package.json # See https://docs.saucelabs.com/web-apps/automated-testing/playwright/#supported-testing-platforms for a list of supported versions.
@@ -22,6 +22,8 @@ suites:
     params:
       browserName: "firefox"
       project: "firefox" # Runs the project that's defined in `playwright.config.js`
+    #  grep: "@regression" # This line tells Playwright to only run tests with the @sanity tag
+      grep: "${PLAYWRIGHT_GREP}"
   - name: "Chromium Mac"
     platformName: "macOS 12"
     screenResolution: "1440x900"
@@ -29,6 +31,7 @@ suites:
     params:
       browserName: "chromium"
       project: "chromium"
+      grep: "@sanity" # This line runs only tests with the @regression tag
   - name: "Webkit Win"
     platformName: "Windows 11"
     screenResolution: "1440x900"
