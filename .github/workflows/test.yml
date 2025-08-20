@@ -5,6 +5,13 @@ on:
   push:
     branches:
       - main
+  # This section adds the manual "Run workflow" button
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'The test tag to run (e.g., @sanity, @regression)'
+        required: false # Set to false so automatic runs don't fail
+        default: '' # Default is to run all tests
 
 env:
   SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
@@ -22,6 +29,10 @@ jobs:
         uses: saucelabs/saucectl-run-action@v4
         with:
           concurrency: 10
+        # This 'env' block sets the tag for the test run.
+        # It uses the tag from the manual input if provided, otherwise it's empty.
+        env:
+          PLAYWRIGHT_GREP: ${{ github.event.inputs.tag }}
 
   playwright-cucumberjs:
     runs-on: ubuntu-latest
